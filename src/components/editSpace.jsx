@@ -4,10 +4,10 @@ import { Experience } from './practicalExp.jsx'
 
 export function EditSection() {
     return (
-        <>
+        <div className='EditSection'>
             <GeneralInfo />
             <Education />
             <Experience />
-        </>
+        </div>
     )
 }

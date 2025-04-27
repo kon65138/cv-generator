@@ -20,16 +20,61 @@ header {
     display: flex;
     align-items: center;
     padding: 0 2vw 0 2vw;
-    color: #c5b4e3;
+    color: #b1e4e3;
     gap: 1vw;
 }
 
 .title {
-    font-size: 2vw;
+    color: #c5b4e3;
+    font-size: 2.5vw;
     flex: 1;
 }
 
 
 .githubLink img {
     width: 3vw;
+}
+
+.mainContent {
+    display: flex;
+    gap: 2vw;
+
+}
+
+.EditSection , .Preview {
+    border-radius: 2vw;
+    flex: 1;
+    height: fit-content;
+    padding: 2vw;
+}
+
+.EditSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    color: #b1e4e3;
+    background-color: #494949;
+    margin-left: 2vw;
+    
+}
+
+.genInfoTitle, .eduTitle , .expTitle {
+    font-size: 1.5vw;
+    font-weight:bold;
+    margin: 1vw 0 1vw 0;
+}
+
+.GeneralInfo , .Education , .Experience {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw;
+    border-radius: 1vw;
+    background-color: #525252;
+    height: 5vw;
+}
+
+.Preview {
+    background-color: #b1e4e3;
+    margin-right: 2vw;
 }

@@ -1,7 +1,7 @@
 export function Preview(){
     return (
-        <>
-        <div>stuff</div>
-        </>
+        <div className="Preview">
+            <div>stuff</div>
+        </div>
     )
 }
