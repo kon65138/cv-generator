@@ -4,7 +4,7 @@ export function Experience(){
         <div className="Experience">
             <button className="ExpBtn">
         <h4 className="expTitle">Experience</h4>
-        <img src={dropDownSvg} alt="" />
+        <img src={dropDownSvg} alt="arrow" />
         </button>
         </div>
     )

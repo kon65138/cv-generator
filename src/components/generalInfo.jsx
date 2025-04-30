@@ -8,20 +8,26 @@ function GIform(){
                             <span>Full name:</span>
                             <strong><span aria-label='required'>*</span></strong>
                         </label>
-                        <input type="text" id="fullname" name='full_name' required/>
+                        <input type="text" id="fullname" name='full_name' maxLength={100} required/>
                     </p>
                     <p>
                     <label htmlFor="email">
                             <span>Email:</span>
                             <strong><span aria-label='required'>*</span></strong>
                         </label>
-                        <input type="email" id='email' name='email_address' required/>
+                        <input type="email" id='email' name='email_address' maxLength={100} required/>
                     </p>
                     <p>
                     <label htmlFor="phoneNum">
                             <span>Phone number:</span>
                         </label>
-                        <input type="tel" id='phoneNum' name='phone_number'/>
+                        <input type="tel" id='phoneNum' name='phone_number' maxLength={15}/>
+                    </p>
+                    <p>
+                    <label htmlFor="address">
+                            <span>Address/Location:</span>
+                        </label>
+                        <input type="text" id='address' name='location' maxLength={100}/>
                     </p>
             </form>
     )
@@ -37,7 +43,7 @@ export function GeneralInfo(){
                 window.getComputedStyle(form).display === 'none' ? form.style.display = 'flex' : form.style.display = 'none';
             }}>
             <h2 className="genInfoTitle">General Info</h2>
-            <img src={dropDownSvg} alt="" />
+            <img src={dropDownSvg} alt="arrow" />
         </button>
         <GIform />
         </div>
