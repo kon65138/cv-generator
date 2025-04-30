@@ -18,16 +18,16 @@ function GIform(){
                         <input type="email" id='email' name='email_address' maxLength={100} required/>
                     </p>
                     <p>
+                    <label htmlFor="homeLocation">
+                            <span>Location:</span>
+                        </label>
+                        <input type="text" id='homeLocation' name='home_location' maxLength={100}/>
+                    </p>
+                    <p>
                     <label htmlFor="phoneNum">
                             <span>Phone number:</span>
                         </label>
                         <input type="tel" id='phoneNum' name='phone_number' maxLength={15}/>
-                    </p>
-                    <p>
-                    <label htmlFor="address">
-                            <span>Address/Location:</span>
-                        </label>
-                        <input type="text" id='address' name='location' maxLength={100}/>
                     </p>
             </form>
     )
