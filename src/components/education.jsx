@@ -19,26 +19,20 @@ function EduForm(){
             </p>
             <p>
                 <span className='doubleLabel'>
-                <label htmlFor="startDate">
+                <label htmlFor="EduStartDate">
                     <span>Start date:</span>
                     <strong><span aria-label='required'>*</span></strong>
                 </label>
-                <label htmlFor="endDate">
+                <label htmlFor="EduEndDate">
                     <span>End date:</span>
                     <strong><span aria-label='required'>*</span></strong>
                 </label>
                 </span>
                 <span className='doubleInput'>
-                <input type="date" id='startDate' name='start_date' required/>
-                <input type="date" id='endDate' name='end_date' required/>
+                <input type="date" id='EduStartDate' name='start_date' required/>
+                <input type="date" id='EduEndDate' name='end_date' required/>
                 </span>
             </p>
-            <div className='jobCheckboxContainer'>
-                <label htmlFor="currentJob">
-                    <span>I'm currently employed here:</span>
-                </label>
-                <input type="checkbox" id='currentJob' name='is_current_job'/>
-            </div>
             <p>
                 <label htmlFor="aboutStudy">
                     <span>About study:</span>
@@ -70,9 +64,9 @@ export function Education(){
         <div className="Education">
             <button className="EduBtn" onClick={(e) => {
                 e.preventDefault()
-                const elm = document.querySelector('.EduDropdown')
-                const edu = window.getComputedStyle(elm).display;
-                edu === 'none' ? elm.style.display = 'flex' : elm.style.display = 'none';
+                const elmt = document.querySelector('.EduDropdown')
+                const elmtDisplay = window.getComputedStyle(elmt).display;
+                elmtDisplay === 'none' ? elmt.style.display = 'flex' : elmt.style.display = 'none';
                 }
             }>
             <h3 className="eduTitle">Education</h3>

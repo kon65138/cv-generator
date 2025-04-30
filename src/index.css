@@ -82,7 +82,7 @@ header {
     z-index: 1;
 }
 
-.GIform ,.EduDropdown {
+.GIform ,.EduDropdown, .ExpDropdown {
     gap: 1vw;
     position: relative;
     padding: 2vw 1vw 1vw 1vw;
@@ -93,7 +93,7 @@ header {
     border-radius: 0 0 20px 20px;
 }
 
-.EduForm {
+.EduForm, .ExpForm {
     display: none;
     flex-direction: column;
     gap: 1vw;
@@ -116,8 +116,6 @@ header {
 .doubleInput input {
     flex: 1;
 }
-
-
 
 .jobCheckboxContainer {
     display: flex;
@@ -156,13 +154,13 @@ header {
     border: none;
 }
 
-.eduOverview {
+.eduOverview , .expOverview {
     display: flex;
     flex-direction: column;
 
 }
 
-.currentEduContainer {
+.currentEduContainer, .currentExpContainer {
 
 }
 
