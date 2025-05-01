@@ -65,7 +65,7 @@ function ExpForm(){
     )
 }
 
-export function Experience(){
+export function Experience({info, onChange}){
     return(
         <div className="Experience">
             <button className="ExpBtn" onClick={(e) => {

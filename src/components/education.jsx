@@ -59,7 +59,7 @@ function EduForm(){
     )
 }
 
-export function Education(){
+export function Education({info, onChange}){
     return(
         <div className="Education">
             <button className="EduBtn" onClick={(e) => {

@@ -35,7 +35,7 @@ header {
     width: 3vw;
 }
 
-.mainContent {
+.MainContent {
     display: flex;
     gap: 2vw;
 
@@ -85,8 +85,8 @@ header {
 .GIform ,.EduDropdown, .ExpDropdown {
     gap: 1vw;
     position: relative;
-    padding: 2vw 1vw 1vw 1vw;
-    top: -1vw;
+    padding: 3.5vw 1vw 1vw 1vw;
+    top: -2.5vw;
     display:none;
     flex-direction: column;
     background-color: #b1e4e3;
