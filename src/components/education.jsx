@@ -193,9 +193,9 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
           value={info.education[blockId].studyLocation}
         />
       </p>
-      <div className="cancelSubmitBtnContainer">
+      <div className="deleteSubmitBtnContainer">
         <button
-          className="cancelBtn"
+          className="deleteBtn"
           onClick={(e) => {
             e.preventDefault();
             const nextEduArr = info.education
@@ -291,7 +291,6 @@ export function Education({ info, onChange }) {
                     return block.editing;
                   }
                   const block = info.education.find(alg);
-                  if (block === undefined) return null;
                   return block.listId;
                 })()}
               />
