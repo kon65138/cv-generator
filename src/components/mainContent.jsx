@@ -8,6 +8,7 @@ export function MainContent() {
       email: '',
       homeLocation: '',
       phoneNum: '',
+      generalAbout: '',
     },
     education: [],
     experience: [],
