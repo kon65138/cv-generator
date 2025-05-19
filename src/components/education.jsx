@@ -179,6 +179,7 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
           name="about_study"
           onChange={update}
           value={info.education[blockId].aboutStudy}
+          maxLength={300}
         />
       </p>
       <p>
@@ -191,6 +192,7 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
           name="study_location"
           onChange={update}
           value={info.education[blockId].studyLocation}
+          maxLength={100}
         />
       </p>
       <div className="deleteSubmitBtnContainer">

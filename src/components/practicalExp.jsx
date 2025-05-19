@@ -114,6 +114,7 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
           type="text"
           id="companyName"
           name="company_name"
+          maxLength={50}
           required
         />
       </p>
@@ -130,6 +131,7 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
           type="text"
           id="positionTitle"
           name="position_name"
+          maxLength={50}
           required
         />
       </p>
@@ -199,6 +201,7 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
           type="text"
           id="positionResponsibilities"
           name="position_responsibilities"
+          maxLength={300}
         />
       </p>
       <p>

@@ -24,7 +24,7 @@ function GIform({ info, onChange, isOpen }) {
           type="text"
           id="fullName"
           name="full_name"
-          maxLength={100}
+          maxLength={60}
           onChange={update}
           value={info.generalInfo.fullName}
           required
@@ -81,7 +81,7 @@ function GIform({ info, onChange, isOpen }) {
           type="text"
           id="generalAbout"
           name="general_about"
-          maxLength={100}
+          maxLength={300}
           onChange={update}
           value={info.generalInfo.generalAbout}
         />

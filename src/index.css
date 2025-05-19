@@ -294,8 +294,75 @@ header {
 }
 
 .paper {
+  padding: 0 1.5vw 0 1.5vw;
+  display: flex;
+  flex-direction: column;
   max-width: inherit;
   aspect-ratio: 1/1.414;
   width: 30vw;
   background-color: white;
+}
+
+.resumeName {
+  text-align: center;
+  margin: 1vw 0 0.5vw 0;
+  font-size: 1.7vw;
+  font-weight: bold;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.contact > div {
+  flex-wrap: nowrap;
+  color: #494949;
+}
+
+.resumeGenAbout {
+  text-align: center;
+  margin: 0.5vw 0 0 0;
+  font-size: 0.9vw;
+}
+
+.resumeExperienceTitle,
+.resumeEducationTitle {
+  margin: 1vw 0 0 0;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+
+.resumeExperience,
+.resumeEducation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+
+.resumePosTitle,
+.resumeEduSubject {
+  font-weight: bold;
+  font-size: 1vw;
+}
+
+.locationAndDates {
+  flex-wrap: wrap;
+  gap: 0.2vw;
+  display: flex;
+}
+
+.resumeCompanyName,
+.resumeExpLocation,
+.resExpDates,
+.resumeEduSchoolName,
+.studyEduLocation,
+.resumeEduDates {
+  font-size: 0.8vw;
+}
+
+.resumeMainResponsibilities,
+.resumeAboutStudy {
+  font-size: 0.9vw;
 }
