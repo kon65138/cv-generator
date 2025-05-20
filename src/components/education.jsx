@@ -1,7 +1,6 @@
 import dropDownSvg from '../assets/stat_minus_1_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
 import openEye from '../assets/visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
 import closedEye from '../assets/visibility_off_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
-import { useState } from 'react';
 
 function EduBlock({
   schoolName,
@@ -9,8 +8,8 @@ function EduBlock({
   info,
   onChange,
   id,
-  isOpen,
-  setIsOpen,
+  eduIsOpen,
+  setEduIsOpen,
 }) {
   function handleClick(e) {
     if (e.target !== document.querySelectorAll('.EduBlock')[id]) {
@@ -25,8 +24,8 @@ function EduBlock({
     });
     const nextInfo = { ...info, education: nextEduArr };
     onChange(nextInfo);
-    setIsOpen({
-      dropdown: isOpen.dropdown,
+    setEduIsOpen({
+      dropdown: eduIsOpen.dropdown,
       form: true,
       overview: false,
     });
@@ -65,7 +64,7 @@ function EduBlock({
   );
 }
 
-function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
+function EduForm({ info, onChange, blockId, eduIsOpen, setEduIsOpen }) {
   function update(e) {
     const nextEduArr = info.education.map((block) => {
       if (block.listId === blockId) {
@@ -89,8 +88,8 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
     });
     const nextInfo = { ...info, education: nextEduArr };
     onChange(nextInfo);
-    setIsOpen({
-      dropdown: isOpen.dropdown,
+    setEduIsOpen({
+      dropdown: eduIsOpen.dropdown,
       form: false,
       overview: true,
     });
@@ -99,7 +98,9 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
     <form
       action="/"
       className="EduForm"
-      style={isOpen.form === true ? { display: 'flex' } : { display: 'none' }}
+      style={
+        eduIsOpen.form === true ? { display: 'flex' } : { display: 'none' }
+      }
     >
       <p>
         <label htmlFor="schoolName">
@@ -211,8 +212,8 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
               });
             const nextInfo = { ...info, education: nextEduArr };
             onChange(nextInfo);
-            setIsOpen({
-              dropdown: isOpen.dropdown,
+            setEduIsOpen({
+              dropdown: eduIsOpen.dropdown,
               form: false,
               overview: true,
             });
@@ -228,12 +229,7 @@ function EduForm({ info, onChange, blockId, isOpen, setIsOpen }) {
   );
 }
 
-export function Education({ info, onChange }) {
-  const [isOpen, setIsOpen] = useState({
-    dropdown: false,
-    form: false,
-    overview: true,
-  });
+export function Education({ info, onChange, eduIsOpen, setEduIsOpen }) {
   function newForm(e) {
     e.preventDefault();
     const nextEduArr = [
@@ -252,8 +248,8 @@ export function Education({ info, onChange }) {
     ];
     const nextInfo = { ...info, education: nextEduArr };
     onChange(nextInfo);
-    setIsOpen({
-      dropdown: isOpen.dropdown,
+    setEduIsOpen({
+      dropdown: eduIsOpen.dropdown,
       form: true,
       overview: false,
     });
@@ -264,28 +260,38 @@ export function Education({ info, onChange }) {
         className="EduBtn"
         onClick={(e) => {
           e.preventDefault();
-          if (isOpen.dropdown === true) {
-            setIsOpen({ ...isOpen, dropdown: false });
+          if (eduIsOpen.dropdown === true) {
+            setEduIsOpen({ ...eduIsOpen, dropdown: false });
           } else {
-            setIsOpen({ ...isOpen, dropdown: true });
+            setEduIsOpen({ ...eduIsOpen, dropdown: true });
           }
         }}
       >
         <h3 className="eduTitle">Education</h3>
-        <img src={dropDownSvg} alt="arrow" />
+        <img
+          src={dropDownSvg}
+          alt="arrow"
+          style={
+            eduIsOpen.dropdown
+              ? { transform: 'rotate(-180deg)', transition: 'transform .3s' }
+              : { transform: 'rotate(0)', transition: 'transform .3s' }
+          }
+        />
       </button>
       <div
         className="EduDropdown"
         style={
-          isOpen.dropdown === true ? { display: 'flex' } : { display: 'none' }
+          eduIsOpen.dropdown === true
+            ? { display: 'flex' }
+            : { display: 'none' }
         }
       >
         {(() => {
-          if (isOpen.form === true) {
+          if (eduIsOpen.form === true) {
             return (
               <EduForm
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
+                eduIsOpen={eduIsOpen}
+                setEduIsOpen={setEduIsOpen}
                 info={info}
                 onChange={onChange}
                 blockId={(() => {
@@ -304,15 +310,17 @@ export function Education({ info, onChange }) {
         <div
           className="eduOverview"
           style={
-            isOpen.overview === true ? { display: 'flex' } : { display: 'none' }
+            eduIsOpen.overview === true
+              ? { display: 'flex' }
+              : { display: 'none' }
           }
         >
           <div className="currentEduContainer">
             {info.education.map((block) => {
               return (
                 <EduBlock
-                  isOpen={isOpen}
-                  setIsOpen={setIsOpen}
+                  eduIsOpen={eduIsOpen}
+                  setEduIsOpen={setEduIsOpen}
                   info={info}
                   onChange={onChange}
                   key={block.listId}

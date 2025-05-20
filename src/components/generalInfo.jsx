@@ -1,7 +1,6 @@
 import dropDownSvg from '../assets/stat_minus_1_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
-import { useState } from 'react';
 
-function GIform({ info, onChange, isOpen }) {
+function GIform({ info, onChange, genIsOpen }) {
   function update(e) {
     const nextGI = { ...info.generalInfo, [e.target.id]: e.target.value };
     const nextInfo = { ...info, generalInfo: nextGI };
@@ -11,7 +10,7 @@ function GIform({ info, onChange, isOpen }) {
     <form
       action="/"
       className="GIform"
-      style={isOpen ? { display: 'flex' } : { display: 'none' }}
+      style={genIsOpen ? { display: 'flex' } : { display: 'none' }}
     >
       <p>
         <label htmlFor="fullName">
@@ -90,20 +89,27 @@ function GIform({ info, onChange, isOpen }) {
   );
 }
 
-export function GeneralInfo({ info, onChange }) {
-  const [isOpen, setIsOpen] = useState(false);
+export function GeneralInfo({ info, onChange, genIsOpen, setGenIsOpen }) {
   return (
     <div className="GeneralInfo">
       <button
         className="GIbtn"
         onClick={() => {
-          isOpen ? setIsOpen(false) : setIsOpen(true);
+          genIsOpen ? setGenIsOpen(false) : setGenIsOpen(true);
         }}
       >
         <h2 className="genInfoTitle">General Info</h2>
-        <img src={dropDownSvg} alt="arrow" />
+        <img
+          src={dropDownSvg}
+          alt="arrow"
+          style={
+            genIsOpen
+              ? { transform: 'rotate(-180deg)', transition: 'transform .3s' }
+              : { transform: 'rotate(0)', transition: 'transform .3s' }
+          }
+        />
       </button>
-      <GIform info={info} onChange={onChange} isOpen={isOpen} />
+      <GIform info={info} onChange={onChange} genIsOpen={genIsOpen} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import dropDownSvg from '../assets/stat_minus_1_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
 import openEye from '../assets/visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
 import closedEye from '../assets/visibility_off_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg';
-import { useState } from 'react';
 
 function ExpBlock({
   companyName,
@@ -9,8 +8,8 @@ function ExpBlock({
   info,
   onChange,
   id,
-  isOpen,
-  setIsOpen,
+  expIsOpen,
+  setExpIsOpen,
 }) {
   function handleClick(e) {
     if (e.target !== document.querySelectorAll('.ExpBlock')[id]) {
@@ -25,8 +24,8 @@ function ExpBlock({
     });
     const nextInfo = { ...info, experience: nextExpArr };
     onChange(nextInfo);
-    setIsOpen({
-      dropdown: isOpen.dropdown,
+    setExpIsOpen({
+      dropdown: expIsOpen.dropdown,
       form: true,
       overview: false,
     });
@@ -64,7 +63,7 @@ function ExpBlock({
   );
 }
 
-function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
+function ExpForm({ info, onChange, expIsOpen, setExpIsOpen, blockId }) {
   function handleSubmit(e) {
     e.preventDefault();
     const nextExpArr = info.experience.map((block) => {
@@ -76,8 +75,8 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
     });
     const nextInfo = { ...info, experience: nextExpArr };
     onChange(nextInfo);
-    setIsOpen({
-      dropdown: isOpen.dropdown,
+    setExpIsOpen({
+      dropdown: expIsOpen.dropdown,
       form: false,
       overview: true,
     });
@@ -98,7 +97,7 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
       action="/"
       className="ExpForm"
       style={
-        isOpen.dropdown === true ? { display: 'flex' } : { display: 'none' }
+        expIsOpen.dropdown === true ? { display: 'flex' } : { display: 'none' }
       }
     >
       <p>
@@ -232,8 +231,8 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
               });
             const nextInfo = { ...info, experience: nextExpArr };
             onChange(nextInfo);
-            setIsOpen({
-              dropdown: isOpen.dropdown,
+            setExpIsOpen({
+              dropdown: expIsOpen.dropdown,
               form: false,
               overview: true,
             });
@@ -249,12 +248,7 @@ function ExpForm({ info, onChange, isOpen, setIsOpen, blockId }) {
   );
 }
 
-export function Experience({ info, onChange }) {
-  const [isOpen, setIsOpen] = useState({
-    dropdown: false,
-    form: false,
-    overview: true,
-  });
+export function Experience({ info, onChange, expIsOpen, setExpIsOpen }) {
   function newForm(e) {
     e.preventDefault();
     const nextExpArr = [
@@ -274,8 +268,8 @@ export function Experience({ info, onChange }) {
     ];
     const nextInfo = { ...info, experience: nextExpArr };
     onChange(nextInfo);
-    setIsOpen({
-      dropdown: isOpen.dropdown,
+    setExpIsOpen({
+      dropdown: expIsOpen.dropdown,
       form: true,
       overview: false,
     });
@@ -286,28 +280,38 @@ export function Experience({ info, onChange }) {
         className="ExpBtn"
         onClick={(e) => {
           e.preventDefault();
-          if (isOpen.dropdown === true) {
-            setIsOpen({ ...isOpen, dropdown: false });
+          if (expIsOpen.dropdown === true) {
+            setExpIsOpen({ ...expIsOpen, dropdown: false });
           } else {
-            setIsOpen({ ...isOpen, dropdown: true });
+            setExpIsOpen({ ...expIsOpen, dropdown: true });
           }
         }}
       >
         <h4 className="expTitle">Experience</h4>
-        <img src={dropDownSvg} alt="arrow" />
+        <img
+          src={dropDownSvg}
+          alt="arrow"
+          style={
+            expIsOpen.dropdown
+              ? { transform: 'rotate(-180deg)', transition: 'transform .3s' }
+              : { transform: 'rotate(0)', transition: 'transform .3s' }
+          }
+        />
       </button>
       <div
         className="ExpDropdown"
         style={
-          isOpen.dropdown === true ? { display: 'flex' } : { display: 'none' }
+          expIsOpen.dropdown === true
+            ? { display: 'flex' }
+            : { display: 'none' }
         }
       >
         {(() => {
-          if (isOpen.form === true) {
+          if (expIsOpen.form === true) {
             return (
               <ExpForm
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
+                expIsOpen={expIsOpen}
+                setExpIsOpen={setExpIsOpen}
                 info={info}
                 onChange={onChange}
                 blockId={(() => {
@@ -324,15 +328,17 @@ export function Experience({ info, onChange }) {
         <div
           className="expOverview"
           style={
-            isOpen.overview === true ? { display: 'flex' } : { display: 'none' }
+            expIsOpen.overview === true
+              ? { display: 'flex' }
+              : { display: 'none' }
           }
         >
           <div className="currentExpContainer">
             {info.experience.map((block) => {
               return (
                 <ExpBlock
-                  isOpen={isOpen}
-                  setIsOpen={setIsOpen}
+                  expIsOpen={expIsOpen}
+                  setExpIsOpen={setExpIsOpen}
                   info={info}
                   onChange={onChange}
                   key={block.listId}

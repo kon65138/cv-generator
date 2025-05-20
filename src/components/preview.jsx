@@ -104,15 +104,43 @@ export function Preview({ info }) {
     <div className="Preview">
       <div className="paper">
         <div className="resumeName">{info.generalInfo.fullName}</div>
-        <hr width="100%" />
+        {(() => {
+          if (
+            info.generalInfo.email ||
+            info.generalInfo.homeLocation ||
+            info.generalInfo.phoneNum ||
+            info.generalInfo.generalAbout
+          ) {
+            return <hr width="100%" />;
+          }
+        })()}
         <div className="contact">
           <div className="resumeLocation">{info.generalInfo.homeLocation}</div>
-          <div className="resumePhone">{info.generalInfo.phoneNum}</div>
-          <div className="resumeEmail">{info.generalInfo.email}</div>
+          <div className="resumePhone">
+            {info.generalInfo.phoneNum && info.generalInfo.homeLocation
+              ? `|${info.generalInfo.phoneNum}`
+              : info.generalInfo.phoneNum}
+          </div>
+          <div className="resumeEmail">
+            {(info.generalInfo.email && info.generalInfo.phoneNum) ||
+            (info.generalInfo.email && info.generalInfo.homeLocation)
+              ? `|${info.generalInfo.email}`
+              : info.generalInfo.email}
+          </div>
         </div>
         <div className="resumeGenAbout">{info.generalInfo.generalAbout}</div>
-        <div className="resumeExperienceTitle">Experience</div>
-        <hr width="100%" />
+        {(() => {
+          for (let i = 0; i < info.experience.length; i++) {
+            if (info.experience[i].visible) {
+              return [
+                <div className="resumeExperienceTitle" key={0}>
+                  Experience
+                </div>,
+                <hr width="100%" key={1} />,
+              ];
+            }
+          }
+        })()}
         <div className="resumeExperience">
           {info.experience.map((block) => {
             if (block.visible) {
@@ -128,8 +156,18 @@ export function Preview({ info }) {
             }
           })}
         </div>
-        <div className="resumeEducationTitle">Education</div>
-        <hr width="100%" />
+        {(() => {
+          for (let i = 0; i < info.education.length; i++) {
+            if (info.education[i].visible) {
+              return [
+                <div className="resumeEducationTitle" key={0}>
+                  Education
+                </div>,
+                <hr width="100%" key={1} />,
+              ];
+            }
+          }
+        })()}
         <div className="resumeEducation">
           {info.education.map((block) => {
             if (block.visible) {

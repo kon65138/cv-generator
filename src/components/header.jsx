@@ -3,7 +3,7 @@ export function Header() {
   return (
     <header>
       <h1 className="title">cv generator</h1>
-      <div>by kon65138</div>
+      <div className="githubName">by kon65138</div>
       <a
         className="githubLink"
         href="https://github.com/kon65138"
